@@ -4,92 +4,160 @@
 <meta charset="UTF-8">
 <title>Animated Register</title>
 
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
 <style>
 
-body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#5f6df0,#8f94fb);
-    font-family:Arial;
-    overflow:hidden;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
 }
 
-/* Registration Form */
+body{
+
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,#5f6df0,#8f94fb);
+overflow:hidden;
+
+}
+
+/* FORM */
 
 .form-box{
-    width:320px;
-    padding:30px;
-    background:white;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.2);
-    text-align:center;
+
+width:340px;
+padding:35px;
+background:white;
+border-radius:14px;
+box-shadow:0 20px 40px rgba(0,0,0,0.25);
+z-index:2;
+
 }
 
 .form-box h2{
-    margin-bottom:20px;
+
+text-align:center;
+margin-bottom:20px;
+
 }
 
 .form-box input{
-    width:100%;
-    padding:10px;
-    margin:8px 0;
-    border-radius:6px;
-    border:1px solid #ccc;
+
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:8px;
+border:1px solid #ddd;
+font-size:14px;
+
+}
+
+.form-box input:focus{
+
+border-color:#5f6df0;
+outline:none;
+box-shadow:0 0 6px rgba(95,109,240,0.4);
+
 }
 
 .form-box button{
-    width:100%;
-    padding:10px;
-    border:none;
-    border-radius:6px;
-    background:#5f6df0;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
+
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+background:#5f6df0;
+color:white;
+font-size:16px;
+cursor:pointer;
+margin-top:10px;
+
 }
 
-/* Character */
+/* CHARACTER */
 
 .character{
-    position:absolute;
-    left:-200px;
-    bottom:80px;
-    width:120px;
 
-    animation:
-    walkToForm 5s forwards,
-    dance 1s infinite 5s;
+position:absolute;
+left:-250px;
+bottom:40px;
+width:200px;
+
+animation: walk 6s forwards;
+
 }
 
-/* Move to form */
+@keyframes walk{
 
-@keyframes walkToForm{
-    0%{
-        left:-200px;
-        transform:rotate(0deg);
-    }
-
-    50%{
-        transform:rotate(10deg);
-    }
-
-    100%{
-        left:40%;
-        transform:rotate(0deg);
-    }
+0%{
+left:-250px;
 }
 
-/* Dancing animation */
+70%{
+left:25%;
+}
 
-@keyframes dance{
-    0%{ transform:translateY(0px) rotate(0deg);}
-    25%{ transform:translateY(-10px) rotate(-5deg);}
-    50%{ transform:translateY(0px) rotate(5deg);}
-    75%{ transform:translateY(-10px) rotate(-5deg);}
-    100%{ transform:translateY(0px) rotate(0deg);}
+100%{
+left:25%;
+}
+
+}
+
+/* SPEECH BUBBLE */
+
+.bubble{
+
+position:absolute;
+bottom:200px;
+left:25%;
+background:white;
+padding:12px 18px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+font-weight:bold;
+
+opacity:0;
+
+animation: showBubble 1s forwards;
+animation-delay:6s;
+
+}
+
+@keyframes showBubble{
+
+to{
+opacity:1;
+}
+
+}
+
+/* POINTING HAND */
+
+.pointer{
+
+position:absolute;
+left:30%;
+bottom:120px;
+font-size:40px;
+
+opacity:0;
+
+animation: showPointer 1s forwards;
+animation-delay:6s;
+
+}
+
+@keyframes showPointer{
+
+to{
+opacity:1;
+}
+
 }
 
 </style>
@@ -97,20 +165,65 @@ body{
 
 <body>
 
-<img class="character"
-src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
+<!-- LOTTIE 3D CHARACTER -->
+
+<div class="character">
+
+<lottie-player
+src="https://assets2.lottiefiles.com/packages/lf20_tfb3estd.json"
+background="transparent"
+speed="1"
+style="width:200px;height:200px;"
+loop
+autoplay>
+
+</lottie-player>
+
+</div>
+
+<!-- SPEECH -->
+
+<div class="bubble">
+
+Register here!
+
+</div>
+
+<!-- POINTER -->
+
+<div class="pointer">
+
+👉
+
+</div>
+
+<!-- FORM -->
 
 <div class="form-box">
 
-<h2>Register Now</h2>
+<h2>Create Account</h2>
 
-<input type="text" placeholder="Username">
+<input id="username" type="text" placeholder="Username">
+
 <input type="email" placeholder="Email">
+
 <input type="password" placeholder="Password">
 
-<button>Sign Up</button>
+<button>Register</button>
 
 </div>
+
+<script>
+
+/* Auto focus */
+
+window.onload = function(){
+
+document.getElementById("username").focus();
+
+};
+
+</script>
 
 </body>
 </html>
