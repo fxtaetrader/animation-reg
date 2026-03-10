@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Animated Register</title>
+
+<style>
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#5f6df0,#8f94fb);
+    font-family:Arial;
+    overflow:hidden;
+}
+
+/* Registration Form */
+
+.form-box{
+    width:320px;
+    padding:30px;
+    background:white;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    text-align:center;
+}
+
+.form-box h2{
+    margin-bottom:20px;
+}
+
+.form-box input{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+
+.form-box button{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:6px;
+    background:#5f6df0;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+/* Character */
+
+.character{
+    position:absolute;
+    left:-200px;
+    bottom:80px;
+    width:120px;
+
+    animation:
+    walkToForm 5s forwards,
+    dance 1s infinite 5s;
+}
+
+/* Move to form */
+
+@keyframes walkToForm{
+    0%{
+        left:-200px;
+        transform:rotate(0deg);
+    }
+
+    50%{
+        transform:rotate(10deg);
+    }
+
+    100%{
+        left:40%;
+        transform:rotate(0deg);
+    }
+}
+
+/* Dancing animation */
+
+@keyframes dance{
+    0%{ transform:translateY(0px) rotate(0deg);}
+    25%{ transform:translateY(-10px) rotate(-5deg);}
+    50%{ transform:translateY(0px) rotate(5deg);}
+    75%{ transform:translateY(-10px) rotate(-5deg);}
+    100%{ transform:translateY(0px) rotate(0deg);}
+}
+
+</style>
+</head>
+
+<body>
+
+<img class="character"
+src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
+
+<div class="form-box">
+
+<h2>Register Now</h2>
+
+<input type="text" placeholder="Username">
+<input type="email" placeholder="Email">
+<input type="password" placeholder="Password">
+
+<button>Sign Up</button>
+
+</div>
+
+</body>
+</html>
